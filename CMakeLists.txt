@@ -4,4 +4,5 @@ project(Tema1_poo)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(Tema1_poo
-        main.cpp)
+        main.cpp
+        Autobuz.cpp)
