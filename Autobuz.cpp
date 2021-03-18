@@ -1,8 +1,4 @@
 #include "Autobuz.h"
-#include <iostream>
-#include <vector>
-
-//std::vector<Autobuz>lista_bus;
 
 Autobuz::Autobuz(int nr, int nrLocuri, int nrStatii) : numar(nr), nr_locuri(nrLocuri), statii(nrStatii) {}
 

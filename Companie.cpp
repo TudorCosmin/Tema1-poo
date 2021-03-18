@@ -13,6 +13,14 @@ void Companie::afisare_autobuze() {
     std::cout << "\n";
 }
 
+/**
+    in clasa Companie as vrea sa am mai multe tipuri de afisari
+
+    se poate sa redefinesc operatorul << astfel incat sa primeasca
+    un parametru de tip Companie si sa stie sa faca diferenta
+    daca eu vreau sa afisez ce e in lista_autobuze
+    sau ce e intr-o eventuala lista_masini?
+ */
 std::ostream &operator<<(std::ostream &os, const Companie &companie) {
     int i;
     for(i = 0; i < companie.lista_autobuze.size(); i++)
