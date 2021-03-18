@@ -1,9 +1,10 @@
 #include <iostream>
+
 #include "Autobuz.h"
+#include "Companie.h"
 #include "Sofer.h"
 
-void AfisareOptiuni()
-{
+void AfisareOptiuni() {
     std::cout << "Optiuni: \n";
     std::cout << "1. Introducere un nou autobuz\n";
     std::cout << "2. Introducere o noua masina\n";
@@ -16,41 +17,63 @@ void AfisareOptiuni()
     std::cout << "7. Iesire\n";
 }
 
-void IntroducereAutobuz()
-{
-    int nr, locuri, statii;
-    std::cout << "\n";
-    std::cout << "Numarul autobuzului: \n";
-    std::cin >> nr;
-    std::cout << "Numarul de locuri: \n";
-    std::cin >> locuri;
-    std::cout << "Numarul de statii: \n";
-    std::cin >> statii;
-
-    Autobuz::Introducere(nr, locuri, statii);
-}
-
-void AfisareAutobuze()
-{
-
-}
-
 int main()
 {
-    int optiune;
+    Sofer Gigel(40, 18, "ABE");
+    std::cout << Gigel;
+    Gigel.actualizare_varsta(41);
+    std::cout << Gigel;
+    Gigel.actualizare_categorie_permis("A2BE");
+    std::cout << Gigel;
+
+
+    Companie STB; // companie cu autobuze
+    Autobuz a;
+    int optiune, i, ok;
+
     while(true)
     {
         AfisareOptiuni();
-        std::cin >> optiune;
+        try
+        {
+            std::cin >> optiune;
 
-        if(optiune == 1)
-            IntroducereAutobuz();
+            ok = 0;
+            for(i = 1; i <= 7; i ++)
+                if(optiune == i)
+                    ok = 1;
+            if(ok != 1)
+                throw 1;
 
-        if(optiune == 4)
-            Autobuz::AfisareAutobuze();
+            else if(optiune == 1)
+            {
+                std::cin >> a;
+                STB.adauga(a);
+            }
 
-        if(optiune == 7)
-            exit(0);
+            else if(optiune == 2)
+                ;//Introducere masina
+
+            else if(optiune == 3)
+                ;//Introducere bicicleta
+
+            else if(optiune == 4)
+                STB.afisare_autobuze();
+
+            else if(optiune == 5)
+                ;//Afisare masini
+
+            else if(optiune == 6)
+                ;//Afisare biciclete
+
+            else if(optiune == 7)
+                exit(0);
+            else throw 2;
+        }
+        catch (...)
+        {
+            std::cout << "\nOptiunea introdusa nu este valida!\n\n";
+        }
     }
 
 }
