@@ -4,15 +4,23 @@
 #include <vector>
 #include <ostream>
 #include "Autobuz.h"
+#include "Masina.h"
+#include "Bicicleta.h"
 
 class Companie {
+    bool tip_autobuz, tip_masina, tip_bicicleta;
     std::vector<Autobuz> lista_autobuze;
+    std::vector<Masina> lista_masini;
+    std::vector<Bicicleta> lista_biciclete;
 
 public:
+    explicit Companie(char tip[]);
 
     void adauga(Autobuz &a);
 
-    void afisare_autobuze();
+    void adauga(Masina &m);
+
+    void adauga(Bicicleta &b);
 
     friend std::ostream &operator<<(std::ostream &os, const Companie &companie);
 

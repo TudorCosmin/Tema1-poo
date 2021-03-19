@@ -14,9 +14,9 @@ public:
 
     ~Autobuz();
 
-    friend std::ostream &operator<<(std::ostream &os, const Autobuz &autobuz);
+    friend std::ostream &operator<<(std::ostream &os, const Autobuz &a);
 
-    friend std::istream &operator>>(std::istream &is, Autobuz &autobuz);
+    friend std::istream &operator>>(std::istream &is, Autobuz &a);
 
     bool operator==(const Autobuz &rhs) const;
 
