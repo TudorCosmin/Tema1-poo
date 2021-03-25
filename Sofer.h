@@ -6,7 +6,7 @@
 
 class Sofer {
     int varsta, ani_experienta;
-    char categorie_permis[10];
+    std::string categorie_permis;
 
     Autobuz a; // nu stiu exact ce ar trebui sa fac cu asta
 
@@ -15,11 +15,11 @@ class Sofer {
 
 
 public:
-    Sofer(int ani, int aniExperienta, char categoriePermis[]);
+    Sofer(int ani, int aniExperienta, std::string categoriePermis);
 
     void actualizare_varsta(int ani);
 
-    void actualizare_categorie_permis(char categoriePermis[]);
+    void actualizare_categorie_permis(std::string categoriePermis);
 
     friend std::ostream &operator<<(std::ostream &os, const Sofer &sofer);
 };

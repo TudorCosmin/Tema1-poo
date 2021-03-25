@@ -1,15 +1,13 @@
+#include <iostream>
 #include "Companie.h"
 
-#include <iostream>
-#include <cstring>
-
-Companie::Companie(char tip[]) {
-    if(strcmp(tip, "autobuz") == 0) {
+Companie::Companie(const std::string& tip) {
+    if(tip ==  "autobuz") {
         tip_autobuz = true;
         tip_masina = false;
         tip_bicicleta = false;
     }
-    else if(strcmp(tip, "masina") == 0) {
+    else if(tip ==  "masina") {
         tip_autobuz = false;
         tip_masina = true;
         tip_bicicleta = false;
@@ -37,26 +35,20 @@ void Companie::adauga(Bicicleta &b) {
     lista_biciclete.push_back(b);
 }
 
-/// cred ca am rezolvat intrebarea din commit-ul anterior
-/// nu stiu daca e cea mai buna solutie :D
 std::ostream &operator<<(std::ostream &os, const Companie &companie) {
     int i;
     if(companie.tip_autobuz) {
         for (i = 0; i < companie.lista_autobuze.size(); i++)
             os << companie.lista_autobuze[i];
-        os << "\n";
-        return os;
     }
     else if(companie.tip_masina) {
         for (i = 0; i < companie.lista_masini.size(); i++)
             os << companie.lista_masini[i];
-        os << "\n";
-        return os;
     }
     else if(companie.tip_bicicleta) {
         for (i = 0; i < companie.lista_biciclete.size(); i++)
             os << companie.lista_biciclete[i];
-        os << "\n";
-        return os;
     }
+    os << "\n";
+    return os;
 }

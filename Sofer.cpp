@@ -1,19 +1,15 @@
 #include <iostream>
-#include <string.h>
 #include "Sofer.h"
 
-Sofer::Sofer(int ani, int aniExperienta, char categoriePermis[]) {
-    varsta = ani;
-    ani_experienta = aniExperienta;
-    strcpy(categorie_permis, categoriePermis);
-}
+Sofer::Sofer(int ani, int aniExperienta, std::string categoriePermis) :
+    varsta(ani), ani_experienta(aniExperienta), categorie_permis(std::move(categoriePermis)) {}
 
 void Sofer::actualizare_varsta(int ani) {
     varsta = ani;
 }
 
-void Sofer::actualizare_categorie_permis(char categoriePermis[]) {
-    strcpy(categorie_permis, categoriePermis);
+void Sofer::actualizare_categorie_permis(std::string categoriePermis) {
+    categorie_permis = std::move(categoriePermis);
 }
 
 std::ostream &operator<<(std::ostream &os, const Sofer &sofer) {

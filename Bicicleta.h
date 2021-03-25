@@ -4,10 +4,10 @@
 #include <iostream>
 
 class Bicicleta {
-    char model[20];
+    std::string model;
 
 public:
-    Bicicleta(char Model[]);
+    explicit Bicicleta(std::string Model);
 
     friend std::ostream &operator<<(std::ostream &os, const Bicicleta &bicicleta);
 

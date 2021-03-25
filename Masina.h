@@ -4,11 +4,11 @@
 #include <ostream>
 
 class Masina {
-    char numar_inmatriculare[20];
-    char marca[20];
+    std::string numar_inmatriculare;
+    std::string marca;
     int an_fabricatie;
 public:
-    Masina(char numarInmatriculare[], char marcaMasina[], int anFabricatie);
+    Masina(std::string numarInmatriculare, std::string marcaMasina, int anFabricatie);
 
     friend std::ostream &operator<<(std::ostream &os, const Masina &masina);
 

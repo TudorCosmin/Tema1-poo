@@ -14,7 +14,7 @@ class Companie {
     std::vector<Bicicleta> lista_biciclete;
 
 public:
-    explicit Companie(char tip[]);
+    explicit Companie(const std::string& tip);
 
     void adauga(Autobuz &a);
 

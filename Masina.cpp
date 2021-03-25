@@ -1,12 +1,8 @@
 #include <iostream>
-#include <cstring>
-
 #include "Masina.h"
 
-Masina::Masina(char numarInmatriculare[], char marcaMasina[], int anFabricatie) : an_fabricatie(anFabricatie) {
-    strcpy(numar_inmatriculare, numarInmatriculare);
-    strcpy(marca, marcaMasina);
-}
+Masina::Masina(std::string numarInmatriculare, std::string marcaMasina, int anFabricatie) :
+    an_fabricatie(anFabricatie), numar_inmatriculare(std::move(numarInmatriculare)), marca(std::move(marcaMasina)) {}
 
 std::ostream &operator<<(std::ostream &os, const Masina &masina) {
     os << "Masina " << masina.marca << " din anul " << masina.an_fabricatie

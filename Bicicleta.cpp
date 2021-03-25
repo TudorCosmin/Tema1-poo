@@ -1,10 +1,6 @@
-#include <cstring>
-
 #include "Bicicleta.h"
 
-Bicicleta::Bicicleta(char Model[]) {
-    strcpy(model, Model);
-}
+Bicicleta::Bicicleta(std::string Model) : model(std::move(Model)) {}
 
 std::ostream &operator<<(std::ostream &os, const Bicicleta &bicicleta) {
     os << "Bicicleta " << bicicleta.model;
