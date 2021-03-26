@@ -22,6 +22,12 @@ std::istream &operator>>(std::istream &is, Masina &masina) {
     return is;
 }
 
+int Masina::TreciStrada() {
+    if(system("start ../masinute.exe") != 0)
+        return 1;
+    return 0;
+}
+
 void Masina::claxon() {
     std::cout << "*claxoneaza masina* beep beep beep tiit tiit tiit *injuraturi in trafic*\n";
 }

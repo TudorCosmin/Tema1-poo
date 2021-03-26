@@ -14,6 +14,8 @@ public:
 
     friend std::istream &operator>>(std::istream &is, Masina &masina);
 
+    static int TreciStrada();
+
     void claxon();
 
     void surpriza();

@@ -8,15 +8,18 @@
 
 void AfisareOptiuni() {
     std::cout << "Optiuni: \n";
-    std::cout << "1. Introducere un nou autobuz\n";
-    std::cout << "2. Introducere o noua masina\n";
-    std::cout << "3. Introducere o noua bicicleta\n";
+    std::cout << "1. Aventureaza-te sa treci strada intr-un loc\n"
+                 "      plin de biciclete, masini si autobuze! [ATENTIE! DOAR PENTRU WINDOWS]\n";
 
-    std::cout << "4. Afisare autobuze\n";
-    std::cout << "5. Afisare masini\n";
-    std::cout << "6. Afisare biciclete\n";
+    std::cout << "2. Introducere un nou autobuz\n";
+    std::cout << "3. Introducere o noua masina\n";
+    std::cout << "4. Introducere o noua bicicleta\n";
 
-    std::cout << "7. Iesire\n";
+    std::cout << "5. Afisare autobuze\n";
+    std::cout << "6. Afisare masini\n";
+    std::cout << "7. Afisare biciclete\n";
+
+    std::cout << "8. Iesire\n";
 }
 
 int main()
@@ -54,7 +57,7 @@ int main()
             std::cin >> optiune;
 
             ok = 0;
-            for(i = 1; i <= 7; i ++)
+            for(i = 1; i <= 8; i ++)
                 if(optiune == i)
                     ok = 1;
             if(ok != 1)
@@ -62,32 +65,39 @@ int main()
 
             else if(optiune == 1)
             {
+                if (masina.TreciStrada() == 1)
+                    std::cout << "Pentru a putea folosi aceasta functie este necesar sa pui\n"
+                                 "masinute.exe in fisierul principal (ala cu headere)\n";
+            }
+
+            else if(optiune == 2)
+            {
                 std::cin >> autobuz;
                 STB.adauga(autobuz);
             }
 
-            else if(optiune == 2)
+            else if(optiune == 3)
             {
                 std::cin >> masina;
                 Spark.adauga(masina);
             }
 
-            else if(optiune == 3) {
+            else if(optiune == 4) {
                 std::cin >> bicicleta;
                 BikeRent.adauga(bicicleta);
             }
 
 
-            else if(optiune == 4)
-                std::cout << STB;
-
             else if(optiune == 5)
-                std::cout << Spark;
+                std::cout << STB << "\n";
 
             else if(optiune == 6)
-                std::cout << BikeRent;
+                std::cout << Spark << "\n";
 
             else if(optiune == 7)
+                std::cout << BikeRent << "\n";
+
+            else if(optiune == 8)
                 exit(0);
             else throw 2;
         }
