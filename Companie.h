@@ -8,7 +8,7 @@
 #include "Bicicleta.h"
 
 class Companie {
-    bool tip_autobuz, tip_masina, tip_bicicleta;
+    bool tip_autobuz = false, tip_masina = false, tip_bicicleta = false;
     std::vector<Autobuz> lista_autobuze;
     std::vector<Masina> lista_masini;
     std::vector<Bicicleta> lista_biciclete;

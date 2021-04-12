@@ -2,8 +2,9 @@
 #define TEMA1_POO_BICICLETA_H
 
 #include <iostream>
+#include "Vehicul.h"
 
-class Bicicleta {
+class Bicicleta: public Vehicul {
     std::string model;
 
 public:

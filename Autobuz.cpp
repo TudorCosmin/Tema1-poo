@@ -10,11 +10,14 @@ Autobuz::~Autobuz() {
 }
 
 std::ostream &operator<<(std::ostream &os, const Autobuz &a) {
-    os << "Autobuzul nr. " << a.numar << " are " << a.nr_locuri << " locuri si trece prin " << a.statii << " statii\n";
+    os << "\nAutobuzul nr. " << a.numar << " are " << a.nr_locuri << " locuri si trece prin " << a.statii << " statii\n";
     return os;
 }
 
 std::istream &operator>>(std::istream &is, Autobuz &a) {
+    // urmeaza sa fac si aici (si in masina.cpp si bicicletaa.cpp) tratarea exceptiilor la citire
+    // probabil o sa o fac cum e in main, sper sa fie ok
+
     std::cout << "\n";
     std::cout << "Numarul autobuzului: \n";
     is >> a.numar;

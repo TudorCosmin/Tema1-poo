@@ -2,8 +2,9 @@
 #define TEMA1_POO_MASINA_H
 
 #include <ostream>
+#include "Vehicul.h"
 
-class Masina {
+class Masina: public Vehicul {
     std::string numar_inmatriculare;
     std::string marca;
     int an_fabricatie;

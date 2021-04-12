@@ -2,21 +2,12 @@
 #include "Companie.h"
 
 Companie::Companie(const std::string& tip) {
-    if(tip ==  "autobuz") {
+    if(tip ==  "autobuz")
         tip_autobuz = true;
-        tip_masina = false;
-        tip_bicicleta = false;
-    }
-    else if(tip ==  "masina") {
-        tip_autobuz = false;
+    else if(tip ==  "masina")
         tip_masina = true;
-        tip_bicicleta = false;
-    }
-    else { // e de tip bicicleta
-        tip_autobuz = false;
-        tip_masina = false;
+    else // e de tip bicicleta
         tip_bicicleta = true;
-    }
 }
 
 // la functiile astea de adaugare as putea sa verific

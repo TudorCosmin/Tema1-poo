@@ -13,8 +13,8 @@ void Sofer::actualizare_categorie_permis(std::string categoriePermis) {
 }
 
 std::ostream &operator<<(std::ostream &os, const Sofer &sofer) {
-    os << "Varsta: " << sofer.varsta <<
+    os << "\nVarsta: " << sofer.varsta <<
        "\nAni de experienta: " << sofer.ani_experienta <<
-       "\nCategorie permis: " << sofer.categorie_permis << "\n\n";
+       "\nCategorie permis: " << sofer.categorie_permis << "\n";
     return os;
 }

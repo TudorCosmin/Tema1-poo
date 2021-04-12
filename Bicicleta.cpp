@@ -3,7 +3,7 @@
 Bicicleta::Bicicleta(std::string Model) : model(std::move(Model)) {}
 
 std::ostream &operator<<(std::ostream &os, const Bicicleta &bicicleta) {
-    os << "Bicicleta " << bicicleta.model;
+    os << "\nBicicleta " << bicicleta.model << "\n";
     return os;
 }
 

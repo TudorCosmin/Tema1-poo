@@ -5,11 +5,12 @@
 #include "Autobuz.h"
 #include "Masina.h"
 #include "Bicicleta.h"
+#include "Vehicul.h"
 
 void AfisareOptiuni() {
     std::cout << "Optiuni: \n";
     std::cout << "1. Aventureaza-te sa treci strada intr-un loc\n"
-                 "      plin de biciclete, masini si autobuze! [ATENTIE! DOAR PENTRU WINDOWS]\n";
+                 "      plin de biciclete, masini si autobuze! [ATENTIE! in lucru]\n";
 
     std::cout << "2. Introducere un nou autobuz\n";
     std::cout << "3. Introducere o noua masina\n";
@@ -22,19 +23,28 @@ void AfisareOptiuni() {
     std::cout << "8. Iesire\n";
 }
 
-int main()
-{
-    int optiune, i, ok;
+bool verifica_input(const std::string &str) {
+    return str.find_first_not_of("12345678") == std::string::npos;
+}
+
+int main() {
+    Vehicul v;
+    Vehicul::Claxon();
+
+
+    std::string optiune;
+    int op;
+
     Companie STB("autobuz"); // companie cu autobuze
     Companie Spark("masina"); // companie care inchiriaza masini
     Companie BikeRent("bicicleta"); // companie care inchiriaza biciclete
 
     // sa vad daca merge clasa Sofer
-    Sofer Gigel(40, 18, "ABE");
+    Sofer Gigel(40, 18, "ABC");
     std::cout << Gigel;
     Gigel.actualizare_varsta(41);
     std::cout << Gigel;
-    Gigel.actualizare_categorie_permis("A2BE");
+    Gigel.actualizare_categorie_permis("ABCDE");
     std::cout << Gigel;
 
     //introduc cate 1-2 default la fiecare
@@ -49,60 +59,56 @@ int main()
     Bicicleta bicicleta("mountain-bike");
     BikeRent.adauga(bicicleta);
 
-    while(true)
-    {
+    Autobuz::Claxon();
+    Masina::Claxon();
+    Bicicleta::Claxon();
+
+    while(true) {
         AfisareOptiuni();
-        try
-        {
+        try {
             std::cin >> optiune;
 
-            ok = 0;
-            for(i = 1; i <= 8; i ++)
-                if(optiune == i)
-                    ok = 1;
-            if(ok != 1)
+            if(verifica_input(optiune) == 0 || optiune.size() != 1) {
                 throw 1;
+            }
+            else op = stoi(optiune); // il face int
 
-            else if(optiune == 1)
-            {
-                if (masina.TreciStrada() == 1)
+            if(op == 1) {
+                if (Masina::TreciStrada() == 1)
                     std::cout << "Pentru a putea folosi aceasta functie este necesar sa pui\n"
                                  "masinute.exe in fisierul principal (ala cu headere)\n";
             }
 
-            else if(optiune == 2)
-            {
+            else if(op == 2) {
                 std::cin >> autobuz;
                 STB.adauga(autobuz);
             }
 
-            else if(optiune == 3)
-            {
+            else if(op == 3) {
                 std::cin >> masina;
                 Spark.adauga(masina);
             }
 
-            else if(optiune == 4) {
+            else if(op == 4) {
                 std::cin >> bicicleta;
                 BikeRent.adauga(bicicleta);
             }
 
 
-            else if(optiune == 5)
-                std::cout << STB << "\n";
+            else if(op == 5)
+                std::cout << STB;
 
-            else if(optiune == 6)
-                std::cout << Spark << "\n";
+            else if(op == 6)
+                std::cout << Spark;
 
-            else if(optiune == 7)
-                std::cout << BikeRent << "\n";
+            else if(op == 7)
+                std::cout << BikeRent;
 
-            else if(optiune == 8)
+            else if(op == 8)
                 exit(0);
             else throw 2;
         }
-        catch (...)
-        {
+        catch (...) {
             std::cout << "\nOptiunea introdusa nu este valida!\n\n";
         }
     }

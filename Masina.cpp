@@ -5,7 +5,7 @@ Masina::Masina(std::string numarInmatriculare, std::string marcaMasina, int anFa
     an_fabricatie(anFabricatie), numar_inmatriculare(std::move(numarInmatriculare)), marca(std::move(marcaMasina)) {}
 
 std::ostream &operator<<(std::ostream &os, const Masina &masina) {
-    os << "Masina " << masina.marca << " din anul " << masina.an_fabricatie
+    os << "\nMasina " << masina.marca << " din anul " << masina.an_fabricatie
         << " are numarul de imatriculare " << masina.numar_inmatriculare << "\n";
     return os;
 }

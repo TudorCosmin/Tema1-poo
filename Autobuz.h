@@ -2,8 +2,9 @@
 #define TEMA1_POO_AUTOBUZ_H
 
 #include <iostream>
+#include "Vehicul.h"
 
-class Autobuz {
+class Autobuz: public Vehicul {
     int numar, nr_locuri, statii;
 
 public:

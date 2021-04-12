@@ -8,10 +8,7 @@ class Sofer {
     int varsta, ani_experienta;
     std::string categorie_permis;
 
-    Autobuz a; // nu stiu exact ce ar trebui sa fac cu asta
-
-    //Autobuz a(335, 42, 12); // chestia asta da eroare desi eu cred
-                            // ca ar trebui sa se apeleze constructorul
+    Autobuz a{335, 42, 12}; // acum merge aparent
 
 
 public:
