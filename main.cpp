@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 
 #include "Companie.h"
 #include "Sofer.h"
@@ -23,7 +24,7 @@ void AfisareOptiuni() {
     std::cout << "8. Iesire\n";
 }
 
-bool verifica_input(const std::string &str) {
+bool numai_cifre(const std::string &str) {
     return str.find_first_not_of("12345678") == std::string::npos;
 }
 
@@ -68,8 +69,8 @@ int main() {
         try {
             std::cin >> optiune;
 
-            if(verifica_input(optiune) == 0 || optiune.size() != 1) {
-                throw 1;
+            if(numai_cifre(optiune) == 0 || optiune.size() != 1) {
+                throw "optiune";
             }
             else op = stoi(optiune); // il face int
 
@@ -106,10 +107,24 @@ int main() {
 
             else if(op == 8)
                 exit(0);
-            else throw 2;
+            else throw 1;
         }
-        catch (...) {
-            std::cout << "\nOptiunea introdusa nu este valida!\n\n";
+        catch (char const* s) {
+            if(strcmp(s, "optiune") == 0)
+                std::cout << "\nOptiunea introdusa nu este valida!\n\n";
+
+            else if(strcmp(s, "nr_autobuz") == 0)
+                std::cout << "\nNumarul autobuzului nu este valid!\n\n";
+            else if(strcmp(s, "nr_locuri") == 0)
+                std::cout << "\nNumarul de locuri nu este valid!\n\n";
+            else if(strcmp(s, "nr_statii") == 0)
+                std::cout << "\nNumarul de statii nu este valid!\n\n";
+
+            else if(strcmp(s, "fabricatie") == 0)
+                std::cout << "\nAnul fabricatiei nu este valid!\n\n";
+
+            else if(strcmp(s, "fabricatie") == 0)
+                std::cout << "\nAnul fabricatiei nu este valid!\n\n";
         }
     }
 

@@ -8,6 +8,7 @@ std::ostream &operator<<(std::ostream &os, const Bicicleta &bicicleta) {
 }
 
 std::istream &operator>>(std::istream &is, Bicicleta &bicicleta) {
+    // iarasi nu am nicio exceptie, poate fi orice
     std::cout << "\n";
     std::cout << "Modelul de bicicleta: \n";
     is >> bicicleta.model;

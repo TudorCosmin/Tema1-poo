@@ -11,14 +11,21 @@ std::ostream &operator<<(std::ostream &os, const Masina &masina) {
 }
 
 std::istream &operator>>(std::istream &is, Masina &masina) {
-    std::cout << "\n";
+    // aici nu iau exceptie pentru ca numele marcii unei masini poate fi orice
+    // la numarul de inmatriculare nu stiu exact cum sa fac
+    // ar trebui introdus de forma AB-123-ABC nu cu spatii sau altele
     std::cout << "Marca masinii: \n";
+    std::string s;
+    std::cout << "\n";
     is >> masina.marca;
     std::cout << "Numarul de inmatriculare: \n";
     // daca citeste un numar de inmatriculare cu spatii o ia razzna
     is >> masina.numar_inmatriculare;
     std::cout << "Anul de fabricatie: \n";
-    is >> masina.an_fabricatie;
+    is >> s;
+    if(s.find_first_not_of("12345678") != std::string::npos || stoi(s) > 2021 || stoi(s) < 1886) // in 1886 a fost inventata prima masina :D
+        throw "fabricatie";
+    masina.an_fabricatie = stoi(s);
     return is;
 }
 
