@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "Vehicul.h"
+#include "Exceptii.h"
 
 class Autobuz: public Vehicul {
     int numar, nr_locuri, statii;

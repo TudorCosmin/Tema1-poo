@@ -19,21 +19,15 @@ std::istream &operator>>(std::istream &is, Autobuz &a) {
     std::cout << "\n";
     std::cout << "Numarul autobuzului: \n";
     is >> s;
-    if(s.find_first_not_of("12345678") != std::string::npos)
-        throw "nr_autobuz";
-    a.numar = stoi(s);
+    a.numar = stoim(s, "nr_autobuz");
 
     std::cout << "Numarul de locuri: \n";
     is >> s;
-    if(s.find_first_not_of("12345678") != std::string::npos)
-        throw "nr_locuri";
-    a.nr_locuri = stoi(s);
+    a.nr_locuri = stoim(s, "nr_locuri");
 
     std::cout << "Numarul de statii: \n";
     is >> s;
-    if(s.find_first_not_of("12345678") != std::string::npos)
-        throw "nr_statii";
-    a.statii = stoi(s);
+    a.statii = stoim(s, "nr_statii");
     return is;
 }
 

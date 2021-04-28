@@ -7,6 +7,8 @@ class Vehicul {
 
 public:
     static void Claxon();
+
+    static void Service();
 };
 
 

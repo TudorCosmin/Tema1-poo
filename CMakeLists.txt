@@ -16,4 +16,5 @@ add_executable(Tema1_poo
         Bicicleta.cpp
         Bicicleta.h
         Vehicul.h
-        Vehicul.cpp)
+        Vehicul.cpp
+        Exceptii.h)

@@ -7,6 +7,7 @@
 #include "Masina.h"
 #include "Bicicleta.h"
 #include "Vehicul.h"
+#include "Exceptii.h"
 
 void AfisareOptiuni() {
     std::cout << "Optiuni: \n";
@@ -22,10 +23,6 @@ void AfisareOptiuni() {
     std::cout << "7. Afisare biciclete\n";
 
     std::cout << "8. Iesire\n";
-}
-
-bool numai_cifre(const std::string &str) {
-    return str.find_first_not_of("12345678") == std::string::npos;
 }
 
 int main() {
@@ -64,15 +61,16 @@ int main() {
     Masina::Claxon();
     Bicicleta::Claxon();
 
+    STB.Claxoneaza();
+
     while(true) {
         AfisareOptiuni();
         try {
             std::cin >> optiune;
 
-            if(numai_cifre(optiune) == 0 || optiune.size() != 1) {
-                throw "optiune";
-            }
-            else op = stoi(optiune); // il face int
+            op = stoim(optiune, "optiune"); // il face int si daca nu reuseste arunca logic error
+            if(op < 1 || op > 8) // astea sunt optiunile valide
+                throw conversie_nereusita("optiune");
 
             if(op == 1) {
                 if (Masina::TreciStrada() == 1)
@@ -107,23 +105,19 @@ int main() {
 
             else if(op == 8)
                 exit(0);
-            else throw 1;
         }
-        catch (char const* s) {
-            if(strcmp(s, "optiune") == 0)
+        catch (std::logic_error &ex) {
+            if(ex.what() == "optiune")
                 std::cout << "\nOptiunea introdusa nu este valida!\n\n";
 
-            else if(strcmp(s, "nr_autobuz") == 0)
+            else if(ex.what() == "nr_autobuz")
                 std::cout << "\nNumarul autobuzului nu este valid!\n\n";
-            else if(strcmp(s, "nr_locuri") == 0)
+            else if(ex.what() == "nr_locuri")
                 std::cout << "\nNumarul de locuri nu este valid!\n\n";
-            else if(strcmp(s, "nr_statii") == 0)
+            else if(ex.what() == "nr_statii")
                 std::cout << "\nNumarul de statii nu este valid!\n\n";
 
-            else if(strcmp(s, "fabricatie") == 0)
-                std::cout << "\nAnul fabricatiei nu este valid!\n\n";
-
-            else if(strcmp(s, "fabricatie") == 0)
+            else if(ex.what() == "fabricatie")
                 std::cout << "\nAnul fabricatiei nu este valid!\n\n";
         }
     }

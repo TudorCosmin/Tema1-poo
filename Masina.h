@@ -3,6 +3,7 @@
 
 #include <ostream>
 #include "Vehicul.h"
+#include "Exceptii.h"
 
 class Masina: public Vehicul {
     std::string numar_inmatriculare;

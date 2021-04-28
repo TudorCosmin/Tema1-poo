@@ -23,9 +23,7 @@ std::istream &operator>>(std::istream &is, Masina &masina) {
     is >> masina.numar_inmatriculare;
     std::cout << "Anul de fabricatie: \n";
     is >> s;
-    if(s.find_first_not_of("12345678") != std::string::npos || stoi(s) > 2021 || stoi(s) < 1886) // in 1886 a fost inventata prima masina :D
-        throw "fabricatie";
-    masina.an_fabricatie = stoi(s);
+    masina.an_fabricatie = stoim(s, "fabricatie");
     return is;
 }
 
