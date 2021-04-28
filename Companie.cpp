@@ -12,8 +12,8 @@ Companie::Companie(const std::string& tip) {
 
 // e bine?
 Companie::~Companie() {
-    for(auto &v : lista_vehicule)
-        delete v;
+//    for(auto &v : lista_vehicule)
+//        delete v;
 }
 
 // la functiile astea de adaugare as putea sa verific
@@ -22,17 +22,17 @@ Companie::~Companie() {
 // poate ceva eroare nu stiu
 void Companie::adauga(Autobuz &a) {
     lista_autobuze.push_back(a);
-    lista_vehicule.push_back(new Autobuz(a));
+    lista_vehicule.push_back(std::make_unique<Autobuz>(a));
 }
 
 void Companie::adauga(Masina &m) {
     lista_masini.push_back(m);
-    lista_vehicule.push_back(new Masina(m));
+    lista_vehicule.push_back(std::make_unique<Masina>(m));
 }
 
 void Companie::adauga(Bicicleta &b) {
     lista_biciclete.push_back(b);
-    lista_vehicule.push_back(new Bicicleta(b));
+    lista_vehicule.push_back(std::make_unique<Bicicleta>(b));
 }
 
 void Companie::Claxoneaza() {

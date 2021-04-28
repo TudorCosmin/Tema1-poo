@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <ostream>
+#include <memory>
 #include "Autobuz.h"
 #include "Masina.h"
 #include "Bicicleta.h"
@@ -14,7 +15,9 @@ class Companie {
     std::vector<Masina> lista_masini;
     std::vector<Bicicleta> lista_biciclete;
 
-    std::vector<Vehicul*> lista_vehicule;
+    // std::vector<Vehicul*> lista_vehicule; // pentru asta trebuie new ceva
+    // cu shared pointer aveam memory leaks mai mari decat cu * (480kb fata de 420kb la still reachable sau ceva)
+    std::vector< std::unique_ptr<Vehicul> > lista_vehicule;
 
 public:
     explicit Companie(const std::string& tip);

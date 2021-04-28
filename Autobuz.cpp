@@ -19,15 +19,15 @@ std::istream &operator>>(std::istream &is, Autobuz &a) {
     std::cout << "\n";
     std::cout << "Numarul autobuzului: \n";
     is >> s;
-    a.numar = stoim(s, "nr_autobuz");
+    a.numar = stoim(s, "Numarul autobuzului nu este valid!");
 
     std::cout << "Numarul de locuri: \n";
     is >> s;
-    a.nr_locuri = stoim(s, "nr_locuri");
+    a.nr_locuri = stoim(s, "Numarul de locuri nu este valid!");
 
     std::cout << "Numarul de statii: \n";
     is >> s;
-    a.statii = stoim(s, "nr_statii");
+    a.statii = stoim(s, "Numarul de statii nu este valid!");
     return is;
 }
 

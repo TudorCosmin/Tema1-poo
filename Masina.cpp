@@ -23,7 +23,7 @@ std::istream &operator>>(std::istream &is, Masina &masina) {
     is >> masina.numar_inmatriculare;
     std::cout << "Anul de fabricatie: \n";
     is >> s;
-    masina.an_fabricatie = stoim(s, "fabricatie");
+    masina.an_fabricatie = stoim(s, "Anul fabricatiei nu este valid!");
     return is;
 }
 

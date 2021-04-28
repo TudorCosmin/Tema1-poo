@@ -30,7 +30,7 @@ int main() {
     Vehicul::Claxon();
 
 
-    std::string optiune;
+    std::string optiune, mesaj;
     int op;
 
     Companie STB("autobuz"); // companie cu autobuze
@@ -68,9 +68,9 @@ int main() {
         try {
             std::cin >> optiune;
 
-            op = stoim(optiune, "optiune"); // il face int si daca nu reuseste arunca logic error
+            op = stoim(optiune, "Optiunea introdusa nu este valida!"); // il face int si daca nu reuseste arunca logic error
             if(op < 1 || op > 8) // astea sunt optiunile valide
-                throw conversie_nereusita("optiune");
+                throw conversie_nereusita("Optiunea introdusa nu este valida!");
 
             if(op == 1) {
                 if (Masina::TreciStrada() == 1)
@@ -107,18 +107,7 @@ int main() {
                 exit(0);
         }
         catch (std::logic_error &ex) {
-            if(ex.what() == "optiune")
-                std::cout << "\nOptiunea introdusa nu este valida!\n\n";
-
-            else if(ex.what() == "nr_autobuz")
-                std::cout << "\nNumarul autobuzului nu este valid!\n\n";
-            else if(ex.what() == "nr_locuri")
-                std::cout << "\nNumarul de locuri nu este valid!\n\n";
-            else if(ex.what() == "nr_statii")
-                std::cout << "\nNumarul de statii nu este valid!\n\n";
-
-            else if(ex.what() == "fabricatie")
-                std::cout << "\nAnul fabricatiei nu este valid!\n\n";
+            std::cout << "\n" << ex.what() << "\n\n";
         }
     }
 
