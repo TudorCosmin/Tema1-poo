@@ -1,13 +1,7 @@
 #include <iostream>
-#include <cstring>
 
 #include "Companie.h"
 #include "Sofer.h"
-#include "Autobuz.h"
-#include "Masina.h"
-#include "Bicicleta.h"
-#include "Vehicul.h"
-#include "Exceptii.h"
 
 void AfisareOptiuni() {
     std::cout << "Optiuni: \n";
@@ -26,16 +20,15 @@ void AfisareOptiuni() {
 }
 
 int main() {
-    Vehicul v;
     Vehicul::Claxon();
 
 
     std::string optiune, mesaj;
     int op;
 
-    Companie STB("autobuz"); // companie cu autobuze
-    Companie Spark("masina"); // companie care inchiriaza masini
-    Companie BikeRent("bicicleta"); // companie care inchiriaza biciclete
+    Companie<Autobuz> STB; // companie cu autobuze
+    Companie<Masina> Spark; // companie care inchiriaza masini
+    Companie<Bicicleta> BikeRent; // companie care inchiriaza biciclete
 
     // sa vad daca merge clasa Sofer
     Sofer Gigel(40, 18, "ABC");
@@ -60,6 +53,7 @@ int main() {
     Autobuz::Claxon();
     Masina::Claxon();
     Bicicleta::Claxon();
+    Masina::Service();
 
     STB.Claxoneaza();
 

@@ -9,8 +9,16 @@
 #include "Bicicleta.h"
 #include "Vehicul.h"
 
+
+template<typename T>
+class Companie;
+
+template<typename T>
+std::ostream &operator<<(std::ostream& os, const Companie<T> &c);
+
+
+template<typename T>
 class Companie {
-    bool tip_autobuz = false, tip_masina = false, tip_bicicleta = false;
     std::vector<Autobuz> lista_autobuze;
     std::vector<Masina> lista_masini;
     std::vector<Bicicleta> lista_biciclete;
@@ -20,21 +28,14 @@ class Companie {
     std::vector< std::unique_ptr<Vehicul> > lista_vehicule;
 
 public:
-    explicit Companie(const std::string& tip);
+    Companie() = default;
 
-    ~Companie();
+    void adauga(T &v);
 
-
-
-    void adauga(Autobuz &a);
-
-    void adauga(Masina &m);
-
-    void adauga(Bicicleta &b);
+    friend std::ostream &operator<< <>(std::ostream &os, const Companie<T> &c);
 
     void Claxoneaza();
 
-    friend std::ostream &operator<<(std::ostream &os, const Companie &companie);
 
 };
 

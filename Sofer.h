@@ -8,7 +8,7 @@ class Sofer {
     int varsta, ani_experienta;
     std::string categorie_permis;
 
-    Autobuz a{335, 42, 12}; // acum merge aparent
+    //Autobuz a{335, 42, 12}; // acum merge aparent
 
 
 public:

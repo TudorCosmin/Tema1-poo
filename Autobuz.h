@@ -9,7 +9,7 @@ class Autobuz: public Vehicul {
     int numar, nr_locuri, statii;
 
 public:
-    Autobuz(int nr = 0, int nrLocuri = 0, int nrStatii = 0);
+    explicit Autobuz(int nr = 0, int nrLocuri = 0, int nrStatii = 0);
 
     Autobuz(const Autobuz &a);
 

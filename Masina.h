@@ -10,6 +10,8 @@ class Masina: public Vehicul {
     std::string marca;
     int an_fabricatie;
 public:
+    Masina() = default;
+
     Masina(std::string numarInmatriculare, std::string marcaMasina, int anFabricatie);
 
     friend std::ostream &operator<<(std::ostream &os, const Masina &masina);

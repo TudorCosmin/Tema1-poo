@@ -1,59 +1,64 @@
 #include <iostream>
 #include "Companie.h"
 
-Companie::Companie(const std::string& tip) {
-    if(tip ==  "autobuz")
-        tip_autobuz = true;
-    else if(tip ==  "masina")
-        tip_masina = true;
-    else // e de tip bicicleta
-        tip_bicicleta = true;
-}
-
-// e bine?
-Companie::~Companie() {
-//    for(auto &v : lista_vehicule)
-//        delete v;
-}
-
-// la functiile astea de adaugare as putea sa verific
-// sa fie clasa de tipul care se vrea a fi adaugat
-// dar nu stiu ce sa fac in caz nu sunt la fel
-// poate ceva eroare nu stiu
-void Companie::adauga(Autobuz &a) {
+template<typename T>
+void Companie<T>::adauga(T &v) {}
+template<>
+void Companie<Autobuz>::adauga(Autobuz &a) {
     lista_autobuze.push_back(a);
     lista_vehicule.push_back(std::make_unique<Autobuz>(a));
 }
-
-void Companie::adauga(Masina &m) {
+template<>
+void Companie<Masina>::adauga(Masina &m) {
     lista_masini.push_back(m);
     lista_vehicule.push_back(std::make_unique<Masina>(m));
 }
-
-void Companie::adauga(Bicicleta &b) {
+template<>
+void Companie<Bicicleta>::adauga(Bicicleta &b) {
     lista_biciclete.push_back(b);
     lista_vehicule.push_back(std::make_unique<Bicicleta>(b));
 }
 
-void Companie::Claxoneaza() {
+// la op astia de afisare am warning uri de genul ppentru fiecare tip:
+// Clang-Tidy: Function template specialization 'operator<<<Autobuz>'
+// has a primary template declaration with different parameter names
+// nu prea stiu cum sa le rezolv
+template <>
+std::ostream &operator<<(std::ostream &os, const Companie<Autobuz> &a) {
+    int i;
+    for (i = 0; i < a.lista_autobuze.size(); i++)
+        os << a.lista_autobuze[i];
+    return os;
+}
+template <>
+std::ostream &operator<<(std::ostream &os, const Companie<Masina> &m) {
+    int i;
+    for (i = 0; i < m.lista_masini.size(); i++)
+        os << m.lista_masini[i];
+    return os;
+}
+
+template <>
+std::ostream &operator<<(std::ostream &os, const Companie<Bicicleta> &b) {
+    int i;
+    for (i = 0; i < b.lista_biciclete.size(); i++)
+        os << b.lista_biciclete[i];
+    return os;
+}
+
+
+template<>
+void Companie<Autobuz>::Claxoneaza() {
     for(auto& v : lista_vehicule)
         v->Claxon();
 }
-
-std::ostream &operator<<(std::ostream &os, const Companie &companie) {
-    int i;
-    if(companie.tip_autobuz) {
-        for (i = 0; i < companie.lista_autobuze.size(); i++)
-            os << companie.lista_autobuze[i];
-    }
-    else if(companie.tip_masina) {
-        for (i = 0; i < companie.lista_masini.size(); i++)
-            os << companie.lista_masini[i];
-    }
-    else if(companie.tip_bicicleta) {
-        for (i = 0; i < companie.lista_biciclete.size(); i++)
-            os << companie.lista_biciclete[i];
-    }
-    os << "\n";
-    return os;
+template<>
+void Companie<Masina>::Claxoneaza() {
+    for(auto& v : lista_vehicule)
+        v->Claxon();
+}
+template<>
+void Companie<Bicicleta>::Claxoneaza() {
+    for(auto& v : lista_vehicule)
+        v->Claxon();
 }
