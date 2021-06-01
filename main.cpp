@@ -47,7 +47,8 @@ int main() {
     Masina masina("B-500-BOS", "BMW", 2002);
     Spark.adauga(masina);
 
-    Bicicleta bicicleta("mountain-bike");
+    Bob_the_builder mecanic;
+    Bicicleta bicicleta = mecanic.model("mountain_bike").transmisie("shimano").tip_frana("disc").marime_roti(29).asambleaza();
     BikeRent.adauga(bicicleta);
 
     Autobuz::Claxon();
